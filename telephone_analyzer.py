@@ -3,14 +3,25 @@
 
 import csv
 import sys
+import pygtk
+import gtk
+import gobject
 
 
 class main:
 
     def __init__(self):
+        builder = gtk.Builder()
+        builder.add_from_file("mainView.ui")
+
+        links = {}
+
+        builder.connect_signals(links)
+
+        self.filefilter = builder.get_object("filefilter")
+
+        self.filefilter.add_pattern("*.cdr")
         self.Tels = {}
-        self.OpenFile()
-        self.AnalyzeFile()
 
     def OpenFile(self):
         try:
@@ -37,6 +48,10 @@ class main:
             print self.Tels[row][0][0]
             print self.Tels[row][1][0]
 
+    def QuitAll(self):
+        print "Cerrada"
+
 
 if __name__ == '__main__':
     main()
+    gtk.main()
