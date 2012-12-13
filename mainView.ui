@@ -4,16 +4,17 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkFileFilter" id="filefilter"/>
   <object class="GtkWindow" id="window1">
-    <property name="width_request">492</property>
+    <property name="width_request">500</property>
     <property name="height_request">180</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Analizador telefónico</property>
     <property name="resizable">False</property>
-    <property name="default_width">492</property>
+    <property name="default_width">500</property>
     <property name="default_height">180</property>
     <property name="icon">call-start.png</property>
     <property name="icon_name">address-book-new</property>
+    <signal name="destroy" handler="on_window1_destroy" swapped="no"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -30,6 +31,7 @@
                 <property name="label" translatable="yes">Refrescar</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-refresh</property>
+                <signal name="clicked" handler="on_button_refresh_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -41,9 +43,10 @@
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Crear ficheros</property>
+                <property name="label" translatable="yes">Generar Ficheros</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-media-play</property>
+                <signal name="clicked" handler="on_button_start_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -99,6 +102,7 @@
                     <property name="create_folders">False</property>
                     <property name="filter">filefilter</property>
                     <property name="width_chars">27</property>
+                    <signal name="file-set" handler="on_filechooserbutton1_file_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -142,17 +146,45 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label2">
+                  <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Ficheros destino</property>
+                    <property name="label" translatable="yes">Carpeta destino</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="padding">4</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkFileChooserButton" id="filechooserbutton2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="action">select-folder</property>
+                    <property name="title" translatable="yes">Seleccionar una carpeta</property>
+                    <property name="width_chars">27</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Nombre ficheros destino</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="padding">4</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
@@ -168,6 +200,7 @@
                         <property name="secondary_icon_activatable">False</property>
                         <property name="primary_icon_sensitive">True</property>
                         <property name="secondary_icon_sensitive">True</property>
+                        <signal name="insert-text" handler="on_entry1_insert_text" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -193,7 +226,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">2</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -204,7 +237,7 @@
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
               </object>
