@@ -13,7 +13,6 @@
     <property name="default_width">500</property>
     <property name="default_height">180</property>
     <property name="icon">logo_pb.png</property>
-    <property name="icon_name">address-book-new</property>
     <signal name="destroy" handler="on_window1_destroy" swapped="no"/>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -23,6 +22,7 @@
           <object class="GtkToolbar" id="toolbar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="toolbar_style">both</property>
             <child>
               <object class="GtkToolButton" id="button_start">
                 <property name="use_action_appearance">False</property>
