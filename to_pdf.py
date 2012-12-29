@@ -14,7 +14,7 @@ class PDF(FPDF):
 
     def header(self):
         # Logo
-        self.image('../img/logo_pb.png', 10, 8, 45)
+        self.image('logo_pb.png', 10, 8, 45)
         # Arial bold 15
         self.set_font('Arial', 'B', 15)
         # Move to the right
